@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on German Martinez</title>
-    <link>https://german-website.pages.dev/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on German Martinez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Thu, 15 Apr 2021 23:39:49 +0530</lastBuildDate>
-    <atom:link href="https://german-website.pages.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Def</title>
-      <link>https://german-website.pages.dev/tags/def/</link>
+      <link>http://localhost:1313/tags/def/</link>
       <pubDate>Thu, 15 Apr 2021 23:39:49 +0530</pubDate>
-      <guid>https://german-website.pages.dev/tags/def/</guid>
+      <guid>http://localhost:1313/tags/def/</guid>
       <description></description>
     </item>
     <item>
       <title>Xyz</title>
-      <link>https://german-website.pages.dev/tags/xyz/</link>
+      <link>http://localhost:1313/tags/xyz/</link>
       <pubDate>Thu, 15 Apr 2021 23:39:49 +0530</pubDate>
-      <guid>https://german-website.pages.dev/tags/xyz/</guid>
+      <guid>http://localhost:1313/tags/xyz/</guid>
       <description></description>
     </item>
   </channel>

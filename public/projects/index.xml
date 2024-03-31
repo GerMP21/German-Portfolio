@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on German Martinez</title>
-    <link>https://german-website.pages.dev/projects/</link>
+    <link>http://localhost:1313/projects/</link>
     <description>Recent content in Projects on German Martinez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="https://german-website.pages.dev/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blüdhaven</title>
-      <link>https://german-website.pages.dev/projects/bludhaven/</link>
+      <link>http://localhost:1313/projects/bludhaven/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://german-website.pages.dev/projects/bludhaven/</guid>
+      <guid>http://localhost:1313/projects/bludhaven/</guid>
       <description>History Blüdhaven was a former whaling town, which was officially incorporated as a &amp;ldquo;Commonwealth&amp;rdquo; in 1912. The town had a generally poor socio-economic populace, owing in part to failed efforts to transform itself into a manufacturing and shipping center.</description>
     </item>
     <item>
       <title>Hydra</title>
-      <link>https://german-website.pages.dev/projects/hydra/</link>
+      <link>http://localhost:1313/projects/hydra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://german-website.pages.dev/projects/hydra/</guid>
+      <guid>http://localhost:1313/projects/hydra/</guid>
       <description>Motto Cut off one head and two will take their place</description>
     </item>
     <item>
       <title>Tatooine</title>
-      <link>https://german-website.pages.dev/projects/tatooine/</link>
+      <link>http://localhost:1313/projects/tatooine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://german-website.pages.dev/projects/tatooine/</guid>
+      <guid>http://localhost:1313/projects/tatooine/</guid>
       <description>A long time ago in a galaxy far, far away&amp;hellip;. A project was planned, but never completed</description>
     </item>
   </channel>

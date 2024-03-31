@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://german-website.pages.dev/tags/def/</loc>
+    <loc>http://localhost:1313/tags/def/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>https://german-website.pages.dev/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>https://german-website.pages.dev/posts/lorem-ipsum/</loc>
+    <loc>http://localhost:1313/posts/lorem-ipsum/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>https://german-website.pages.dev/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>https://german-website.pages.dev/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>https://german-website.pages.dev/tags/xyz/</loc>
+    <loc>http://localhost:1313/tags/xyz/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>https://german-website.pages.dev/projects/bludhaven/</loc>
+    <loc>http://localhost:1313/projects/bludhaven/</loc>
   </url><url>
-    <loc>https://german-website.pages.dev/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://german-website.pages.dev/projects/hydra/</loc>
+    <loc>http://localhost:1313/projects/hydra/</loc>
   </url><url>
-    <loc>https://german-website.pages.dev/projects/</loc>
+    <loc>http://localhost:1313/projects/</loc>
   </url><url>
-    <loc>https://german-website.pages.dev/projects/tatooine/</loc>
+    <loc>http://localhost:1313/projects/tatooine/</loc>
   </url>
 </urlset>
