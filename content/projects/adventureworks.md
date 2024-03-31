@@ -4,7 +4,9 @@ type: page
 ---
 
 ![Sales Overview](/images/adventureworks/salesoverview.png "Sales Overview")
+
 ![Product Details](/images/adventureworks/productdetails.png "Product Details")
+
 ![Customer Details](/images/adventureworks/customerdetails.png "Customer Details")
 
 ## Business Request & User Stories
