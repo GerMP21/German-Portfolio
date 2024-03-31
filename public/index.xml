@@ -16,25 +16,11 @@
       <description>Heading 1 &amp;ldquo;Lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     <item>
-      <title>Blüdhaven</title>
-      <link>http://localhost:1313/projects/bludhaven/</link>
+      <title>AdventureWorks Sales Analysis and Dashboard</title>
+      <link>http://localhost:1313/projects/adventureworks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/bludhaven/</guid>
-      <description>History Blüdhaven was a former whaling town, which was officially incorporated as a &amp;ldquo;Commonwealth&amp;rdquo; in 1912. The town had a generally poor socio-economic populace, owing in part to failed efforts to transform itself into a manufacturing and shipping center.</description>
-    </item>
-    <item>
-      <title>Hydra</title>
-      <link>http://localhost:1313/projects/hydra/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/hydra/</guid>
-      <description>Motto Cut off one head and two will take their place</description>
-    </item>
-    <item>
-      <title>Tatooine</title>
-      <link>http://localhost:1313/projects/tatooine/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/tatooine/</guid>
-      <description>A long time ago in a galaxy far, far away&amp;hellip;. A project was planned, but never completed</description>
+      <guid>http://localhost:1313/projects/adventureworks/</guid>
+      <description>Business Request &amp;amp; User Stories The business request for this project was an executive sales report for sales managers. Based on the request that was made from the business we following user stories were defined to fulfill delivery and ensure that acceptance criteria’s were maintained throughout the project.&#xA;As a (role) I want (request / demand) So that I can (user value) Acceptance Criteria Sales Manager A dashboard overview of internet sales Follow sales over time against budget A Power Bi dashboard with graphs and KPIs comparing sales against budget.</description>
     </item>
   </channel>
 </rss>
