@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://german-website.pages.dev"
 title = "German Martinez"
 theme = "gokarna"
 languageCode = "en"
@@ -12,7 +12,7 @@ pygmentsStyle = "monokai"
 [params]
   footer = "German Martinez"
   description = "A data enthusiast looking to leverage my skills to generate value"
-  avatarURL = "/images/avatar.webp"
+  avatarURL = "/images/avatar.jpg"
   AvatarAltText = "avatar"
   avatarSize = "size-m"
   ShowBackToTopButton = true # true or false for "back to top" button on posts
@@ -37,11 +37,7 @@ pygmentsStyle = "monokai"
     </script>
   """
   socialIcons = [
-    {name = "linkedin", url = "https://example.com"},
-    {name = "twitter", url = "https://example.com"},
-    {name = "instagram", url = "https://example.com"},
-    {name = "twitch", url = "https://example.com"},
-    {name = "youtube", url = "https://example.com"},
+    {name = "linkedin", url = "https://www.linkedin.com/in/germanmp/"},
     {name = "email", url = "mailto:german.martinez.pascale@gmail.com"}
   ]
   metaKeywords = ["blog", "portfolio", "data", "data analysis", "data science", "data engineering", "machine learning", "deep learning"]
@@ -57,9 +53,9 @@ pygmentsStyle = "monokai"
     weight = 1
 
   [[menu.main]]
-    name = "Blog"
+    name = "Posts"
     pre = "<span data-feather='book'></span>"
-    url = "/blog/"
+    url = "/posts/"
     weight = 2
 
   [[menu.main]]
