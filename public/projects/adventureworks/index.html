@@ -191,8 +191,6 @@
 
     <div class="post-content">
         <p><img src="/images/adventureworks/salesoverview.png" alt="Sales Overview" title="Sales Overview"></p>
-<p><img src="/images/adventureworks/productdetails.png" alt="Product Details" title="Product Details"></p>
-<p><img src="/images/adventureworks/customerdetails.png" alt="Customer Details" title="Customer Details"></p>
 <h2 id="business-request--user-stories">Business Request &amp; User Stories</h2>
 <p>The business request for this project was an executive sales report for sales managers. Based on the request that was made from the business we following user stories were defined to fulfill delivery and ensure that acceptance criteria’s were maintained throughout the project.</p>
 <table>
@@ -234,6 +232,83 @@
 <h2 id="data-cleansing--transformation-sql">Data Cleansing &amp; Transformation (SQL)</h2>
 <p>To create the necessary data model for doing analysis and fulfilling the business needs defined in the user stories the following tables were extracted using SQL.</p>
 <p>One data source (sales budgets) was provided in Excel format and were connected in the data model in a later step of the process.</p>
+<p>Below are the SQL statements for cleansing and transforming necessary data.</p>
+<p><strong>DimDate:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Cleansed DIM_Date Table --
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>  [DateKey], 
+</span></span><span style="display:flex;"><span>  [FullDateAlternateKey] <span style="color:#66d9ef">AS</span> Date, 
+</span></span><span style="display:flex;"><span>  [EnglishDayNameOfWeek] <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Day</span>, 
+</span></span><span style="display:flex;"><span>  [EnglishMonthName] <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Month</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">Left</span>([EnglishMonthName], <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">AS</span> MonthShort,
+</span></span><span style="display:flex;"><span>  [MonthNumberOfYear] <span style="color:#66d9ef">AS</span> MonthNo, 
+</span></span><span style="display:flex;"><span>  [CalendarQuarter] <span style="color:#66d9ef">AS</span> Quarter, 
+</span></span><span style="display:flex;"><span>  [CalendarYear] <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">Year</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span> [AdventureWorksDW2022].[dbo].[DimDate]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>  CalendarYear <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2022</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">AND</span> CalendarYear <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2024</span>
+</span></span></code></pre></div><p><strong>DimCustomer:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Cleansed DIM_Customers Table --
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">c</span>.customerkey <span style="color:#66d9ef">AS</span> CustomerKey, 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">c</span>.firstname <span style="color:#66d9ef">AS</span> [<span style="color:#66d9ef">First</span> Name], 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">c</span>.lastname <span style="color:#66d9ef">AS</span> [<span style="color:#66d9ef">Last</span> Name], 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">c</span>.firstname <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">+</span> lastname <span style="color:#66d9ef">AS</span> [<span style="color:#66d9ef">Full</span> Name],
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">CASE</span> <span style="color:#66d9ef">c</span>.gender <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;M&#39;</span> <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Male&#39;</span> <span style="color:#66d9ef">WHEN</span> <span style="color:#e6db74">&#39;F&#39;</span> <span style="color:#66d9ef">THEN</span> <span style="color:#e6db74">&#39;Female&#39;</span> <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">AS</span> Gender,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">c</span>.datefirstpurchase <span style="color:#66d9ef">AS</span> DateFirstPurchase, 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">g</span>.city <span style="color:#66d9ef">AS</span> [Customer City] <span style="color:#75715e">-- Joined in Customer City from Geography Table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>  [AdventureWorksDW2022].[dbo].[DimCustomer] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">c</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> [AdventureWorksDW2022].[dbo].[DimGeography] <span style="color:#66d9ef">AS</span> <span style="color:#66d9ef">g</span> <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">g</span>.geographykey <span style="color:#f92672">=</span> <span style="color:#66d9ef">c</span>.geographykey 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> 
+</span></span><span style="display:flex;"><span>  CustomerKey <span style="color:#66d9ef">ASC</span> <span style="color:#75715e">-- Ordered List by CustomerKey
+</span></span></span></code></pre></div><p><strong>DimProduct:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Cleansed DIM_Products Table --
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>  p.[ProductKey], 
+</span></span><span style="display:flex;"><span>  p.[ProductAlternateKey] <span style="color:#66d9ef">AS</span> ProductItemCode, 
+</span></span><span style="display:flex;"><span>  p.[EnglishProductName] <span style="color:#66d9ef">AS</span> [Product Name], 
+</span></span><span style="display:flex;"><span>  psc.EnglishProductSubcategoryName <span style="color:#66d9ef">AS</span> [Sub Category], <span style="color:#75715e">-- Joined in from Sub Category Table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  pc.EnglishProductCategoryName <span style="color:#66d9ef">AS</span> [Product Category], <span style="color:#75715e">-- Joined in from Category Table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  p.[Color] <span style="color:#66d9ef">AS</span> [Product Color], 
+</span></span><span style="display:flex;"><span>  p.[<span style="color:#66d9ef">Size</span>] <span style="color:#66d9ef">AS</span> [Product <span style="color:#66d9ef">Size</span>], 
+</span></span><span style="display:flex;"><span>  p.[ProductLine] <span style="color:#66d9ef">AS</span> [Product Line], 
+</span></span><span style="display:flex;"><span>  p.[ModelName] <span style="color:#66d9ef">AS</span> [Product Model Name], 
+</span></span><span style="display:flex;"><span>  p.[EnglishDescription] <span style="color:#66d9ef">AS</span> [Product Description], 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ISNULL</span> (p.Status, <span style="color:#e6db74">&#39;Outdated&#39;</span>) <span style="color:#66d9ef">AS</span> [Product Status] 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>  [AdventureWorksDW2022].[dbo].[DimProduct] <span style="color:#66d9ef">as</span> p
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> [AdventureWorksDW2022].[dbo].[DimProductSubcategory] <span style="color:#66d9ef">AS</span> psc <span style="color:#66d9ef">ON</span> psc.ProductSubcategoryKey <span style="color:#f92672">=</span> p.ProductSubcategoryKey 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">LEFT</span> <span style="color:#66d9ef">JOIN</span> [AdventureWorksDW2022].[dbo].[DimProductCategory] <span style="color:#66d9ef">AS</span> pc <span style="color:#66d9ef">ON</span> psc.ProductCategoryKey <span style="color:#f92672">=</span> pc.ProductCategoryKey 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> 
+</span></span><span style="display:flex;"><span>  p.ProductKey <span style="color:#66d9ef">asc</span>
+</span></span></code></pre></div><p><strong>FactInternetSales:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Cleansed FACT_InternetSales Table --
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> 
+</span></span><span style="display:flex;"><span>  [ProductKey], 
+</span></span><span style="display:flex;"><span>  [OrderDateKey], 
+</span></span><span style="display:flex;"><span>  [DueDateKey], 
+</span></span><span style="display:flex;"><span>  [ShipDateKey], 
+</span></span><span style="display:flex;"><span>  [CustomerKey], 
+</span></span><span style="display:flex;"><span>  [SalesOrderNumber], 
+</span></span><span style="display:flex;"><span>  [SalesAmount]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> 
+</span></span><span style="display:flex;"><span>  [AdventureWorksDW2022].[dbo].[FactInternetSales]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">LEFT</span> (OrderDateKey, <span style="color:#ae81ff">4</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#66d9ef">YEAR</span>(GETDATE()) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e">-- Ensures we always only bring two years of date from extraction
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">AND</span> <span style="color:#66d9ef">LEFT</span> (OrderDateKey, <span style="color:#ae81ff">4</span>) <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;2024&#39;</span> <span style="color:#75715e">-- Filter out sales before 2024
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span>
+</span></span><span style="display:flex;"><span>  OrderDateKey <span style="color:#66d9ef">ASC</span>
+</span></span></code></pre></div><h2 id="data-model">Data Model</h2>
+<p>Below is a screenshot of the data model after cleansed and prepared tables were read into Power BI.</p>
+<p><img src="/images/adventureworks/datamodel.png" alt="Data Model" title="Data Model"></p>
+<h2 id="sales-management-dashboard">Sales Management Dashboard</h2>
+<p>The finished sales management dashboard with one page with works as a dashboard and overview, with two other pages focused on combining tables for necessary details and visualizations to show sales over time, per customers and per products.</p>
+<p><img src="/images/adventureworks/salesoverview.png" alt="Sales Overview" title="Sales Overview"></p>
+<p><img src="/images/adventureworks/productdetails.png" alt="Product Details" title="Product Details"></p>
+<p><img src="/images/adventureworks/customerdetails.png" alt="Customer Details" title="Customer Details"></p>
 
     </div>
 </div>
