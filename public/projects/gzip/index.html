@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>K Nearest Neighbour Sentiment Analysis with Gzip Embeddings</title>
+    <meta name="description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta name="keywords" content='blog, portfolio, data, data analysis, data science, data engineering, machine learning, deep learning'>
+
+    <meta property="og:url" content="http://localhost:1313/projects/gzip/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="K Nearest Neighbour Sentiment Analysis with Gzip Embeddings">
+    <meta property="og:description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta property="og:image" content="http://localhost:1313/images/avatar.jpg">
+    <meta property="og:image:secure_url" content="http://localhost:1313/images/avatar.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="K Nearest Neighbour Sentiment Analysis with Gzip Embeddings">
+    <meta name="twitter:description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta property="twitter:domain" content="http://localhost:1313/projects/gzip/">
+    <meta property="twitter:url" content="http://localhost:1313/projects/gzip/">
+    <meta name="twitter:image" content="http://localhost:1313/images/avatar.jpg">
+
+    
+    <link rel="canonical" href="http://localhost:1313/projects/gzip/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:1313/">
+                <img src='/images/avatar.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:1313/">German Martinez</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/germp21"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.buymeacoffee.com/germp21"><span data-feather='coffee'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/germp21"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.buymeacoffee.com/germp21"><span data-feather='coffee'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>K Nearest Neighbour Sentiment Analysis with Gzip Embeddings</h1>
+    </div>
+
+    <div class="post-content">
+        <h2 id="imports">Imports</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gzip
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pickle
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> multiprocessing
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> warnings
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.neighbors <span style="color:#f92672">import</span> KNeighborsClassifier
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> accuracy_score
+</span></span></code></pre></div><h2 id="load-dataset">Load Dataset</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># There are a total of 24639 samples</span>
+</span></span><span style="display:flex;"><span>n_samples <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;/kaggle/input/sentiment-and-emotions-of-tweets/sentiment-emotion-labelled_Dell_tweets.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>truncate(<span style="color:#ae81ff">0</span>, n_samples)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;Text&#39;</span>]
+</span></span><span style="display:flex;"><span>X<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><img src="/images/gzip/x.png" alt="x" title="x"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>y <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;sentiment&#39;</span>]
+</span></span><span style="display:flex;"><span>y<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><img src="/images/gzip/y.png" alt="y" title="y"></p>
+<h2 id="data-cleaning-and-preparation">Data Cleaning and Preparation</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;@[^ ]+&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, regex<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) <span style="color:#75715e"># Remove tagged users</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;#[^ ]+&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, regex<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) <span style="color:#75715e"># Remove hashtags</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;http[^ ]+&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, regex<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) <span style="color:#75715e"># Remove hashtags</span>
+</span></span><span style="display:flex;"><span>X<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><img src="/images/gzip/xclean.png" alt="xclean" title="xclean"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>y_labels <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;positive&#39;</span>: <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;neutral&#39;</span>: <span style="color:#ae81ff">0</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;negative&#39;</span>: <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> y<span style="color:#f92672">.</span>map(y_labels) <span style="color:#75715e"># Map string labels to integers</span>
+</span></span><span style="display:flex;"><span>y<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><img src="/images/gzip/yclean.png" alt="yclean" title="yclean"></p>
+<h2 id="traintest-splitting">Train/Test splitting</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(X, y,
+</span></span><span style="display:flex;"><span>                                                    test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>,
+</span></span><span style="display:flex;"><span>                                                    random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>                                                    stratify<span style="color:#f92672">=</span>y)
+</span></span></code></pre></div><h2 id="how-to-normalize-compression-distances">How to Normalize Compression Distances</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X1_compressed <span style="color:#f92672">=</span> len(gzip<span style="color:#f92672">.</span>compress(X_train[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>encode()))
+</span></span><span style="display:flex;"><span>X1_compressed
+</span></span></code></pre></div><blockquote>
+<p>177</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X2_compressed <span style="color:#f92672">=</span> len(gzip<span style="color:#f92672">.</span>compress(X_train[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode()))
+</span></span><span style="display:flex;"><span>X2_compressed
+</span></span></code></pre></div><blockquote>
+<p>121</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>XX <span style="color:#f92672">=</span> len(gzip<span style="color:#f92672">.</span>compress((<span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join([X_train[<span style="color:#ae81ff">0</span>], X_train[<span style="color:#ae81ff">1</span>]]))<span style="color:#f92672">.</span>encode()))
+</span></span><span style="display:flex;"><span>XX
+</span></span></code></pre></div><blockquote>
+<p>255</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>NCD <span style="color:#f92672">=</span> (XX <span style="color:#f92672">-</span> min(X1_compressed, X2_compressed)) <span style="color:#f92672">/</span> max(X1_compressed, X2_compressed)
+</span></span><span style="display:flex;"><span>NCD
+</span></span></code></pre></div><blockquote>
+<p>0.7570621468926554</p>
+</blockquote>
+<h2 id="compression-distance-normalization">Compression Distance Normalization</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_ncd</span>(x1, x2):
+</span></span><span style="display:flex;"><span>    X1_compressed <span style="color:#f92672">=</span> len(gzip<span style="color:#f92672">.</span>compress(x1<span style="color:#f92672">.</span>encode()))
+</span></span><span style="display:flex;"><span>    X2_compressed <span style="color:#f92672">=</span> len(gzip<span style="color:#f92672">.</span>compress(x2<span style="color:#f92672">.</span>encode()))  
+</span></span><span style="display:flex;"><span>    XX <span style="color:#f92672">=</span> len(gzip<span style="color:#f92672">.</span>compress((<span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join([x1, x2]))<span style="color:#f92672">.</span>encode()))
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    NCD <span style="color:#f92672">=</span> (XX <span style="color:#f92672">-</span> min(X1_compressed, X2_compressed)) <span style="color:#f92672">/</span> max(X1_compressed, X2_compressed)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> NCD
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_train_ncd</span>(X_train):
+</span></span><span style="display:flex;"><span>   NCD <span style="color:#f92672">=</span> [[calculate_ncd(X_train<span style="color:#f92672">.</span>iloc[i], X_train<span style="color:#f92672">.</span>iloc[j]) <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(len(X_train))] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(X_train))]
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> NCD
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_test_ncd</span>(X_test, X_train):
+</span></span><span style="display:flex;"><span>   NCD <span style="color:#f92672">=</span> [[calculate_ncd(X_test<span style="color:#f92672">.</span>iloc[i], X_train<span style="color:#f92672">.</span>iloc[j]) <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(len(X_train))] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(X_test))]
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> NCD
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>CPU_CORES <span style="color:#f92672">=</span> multiprocessing<span style="color:#f92672">.</span>cpu_count()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> multiprocessing<span style="color:#f92672">.</span>Pool(CPU_CORES) <span style="color:#66d9ef">as</span> pool:
+</span></span><span style="display:flex;"><span>    train_NCD <span style="color:#f92672">=</span> pool<span style="color:#f92672">.</span>apply(calculate_train_ncd, [X_train])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> multiprocessing<span style="color:#f92672">.</span>Pool(CPU_CORES) <span style="color:#66d9ef">as</span> pool:
+</span></span><span style="display:flex;"><span>    test_NCD <span style="color:#f92672">=</span> pool<span style="color:#f92672">.</span>apply_async(calculate_test_ncd, args<span style="color:#f92672">=</span>(X_test, X_train))
+</span></span><span style="display:flex;"><span>    test_NCD <span style="color:#f92672">=</span> test_NCD<span style="color:#f92672">.</span>get()
+</span></span></code></pre></div><h2 id="training">Training</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># KNN classification</span>
+</span></span><span style="display:flex;"><span>knn4 <span style="color:#f92672">=</span> KNeighborsClassifier(n_neighbors<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>) 
+</span></span><span style="display:flex;"><span>knn4<span style="color:#f92672">.</span>fit(train_NCD, y_train)
+</span></span><span style="display:flex;"><span>knn5 <span style="color:#f92672">=</span> KNeighborsClassifier(n_neighbors<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>) 
+</span></span><span style="display:flex;"><span>knn5<span style="color:#f92672">.</span>fit(train_NCD, y_train)
+</span></span><span style="display:flex;"><span>knn6 <span style="color:#f92672">=</span> KNeighborsClassifier(n_neighbors<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>) 
+</span></span><span style="display:flex;"><span>knn6<span style="color:#f92672">.</span>fit(train_NCD, y_train)
+</span></span><span style="display:flex;"><span>knn7 <span style="color:#f92672">=</span> KNeighborsClassifier(n_neighbors<span style="color:#f92672">=</span><span style="color:#ae81ff">7</span>) 
+</span></span><span style="display:flex;"><span>knn7<span style="color:#f92672">.</span>fit(train_NCD, y_train)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>y_pred4 <span style="color:#f92672">=</span> knn4<span style="color:#f92672">.</span>predict(test_NCD)
+</span></span><span style="display:flex;"><span>y_pred5 <span style="color:#f92672">=</span> knn5<span style="color:#f92672">.</span>predict(test_NCD)
+</span></span><span style="display:flex;"><span>y_pred6 <span style="color:#f92672">=</span> knn6<span style="color:#f92672">.</span>predict(test_NCD)
+</span></span><span style="display:flex;"><span>y_pred7 <span style="color:#f92672">=</span> knn7<span style="color:#f92672">.</span>predict(test_NCD)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>score4 <span style="color:#f92672">=</span> accuracy_score(y_test, y_pred4, normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Accuracy: &#39;</span>, score4)
+</span></span><span style="display:flex;"><span>score5 <span style="color:#f92672">=</span> accuracy_score(y_test, y_pred5, normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Accuracy: &#39;</span>, score5)
+</span></span><span style="display:flex;"><span>score6 <span style="color:#f92672">=</span> accuracy_score(y_test, y_pred6, normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Accuracy: &#39;</span>, score6)
+</span></span><span style="display:flex;"><span>score7 <span style="color:#f92672">=</span> accuracy_score(y_test, y_pred7, normalize<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Accuracy: &#39;</span>, score7)
+</span></span></code></pre></div><p><img src="/images/gzip/accuracy.png" alt="accuracy" title="accuracy"></p>
+
+    </div>
+</div>
+
+
+
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 German Martinez</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

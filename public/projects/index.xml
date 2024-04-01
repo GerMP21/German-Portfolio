@@ -15,11 +15,18 @@
       <description>Business Request &amp;amp; User Stories The business request for this project was an executive sales report for sales managers. Based on the request that was made from the business we following user stories were defined to fulfill delivery and ensure that acceptance criteria’s were maintained throughout the project.&#xA;As a (role) I want (request / demand) So that I can (user value) Acceptance Criteria Sales Manager A dashboard overview of internet sales Follow sales over time against budget A Power Bi dashboard with graphs and KPIs comparing sales against budget.</description>
     </item>
     <item>
+      <title>K Nearest Neighbour Sentiment Analysis with Gzip Embeddings</title>
+      <link>http://localhost:1313/projects/gzip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/gzip/</guid>
+      <description>Imports import gzip import time import pickle import multiprocessing import warnings import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.neighbors import KNeighborsClassifier from sklearn.metrics import accuracy_score Load Dataset # There are a total of 24639 samples n_samples = 5000 df = pd.read_csv(&amp;#39;/kaggle/input/sentiment-and-emotions-of-tweets/sentiment-emotion-labelled_Dell_tweets.csv&amp;#39;) df = df.truncate(0, n_samples) X = df[&amp;#39;Text&amp;#39;] X.head() y = df[&amp;#39;sentiment&amp;#39;] y.head() Data Cleaning and Preparation X = X.str.replace(r&amp;#39;@[^ ]+&amp;#39;, &amp;#39;&amp;#39;, regex=True) # Remove tagged users X = X.</description>
+    </item>
+    <item>
       <title>Logistic Regression for Heart Attacks</title>
       <link>http://localhost:1313/projects/heartattack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/heartattack/</guid>
-      <description>Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.fit(X) X_scaled = scaler.transform(X) Test Train Split X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state = 43) Model Training model = LogisticRegression() model.fit(X_train,y_train) Test Model y_pred = model.</description>
+      <description>Abstract This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis and Prediction Dataset.&#xA;Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.</description>
     </item>
     <item>
       <title>Visual Transformer from Scratch for Pneumonia Detection</title>

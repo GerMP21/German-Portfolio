@@ -20,11 +20,13 @@
     <loc>http://localhost:1313/tags/xyz/</loc>
     <lastmod>2021-04-15T23:39:49+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/heartattack/</loc>
-  </url><url>
     <loc>http://localhost:1313/projects/adventureworks/</loc>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/projects/gzip/</loc>
+  </url><url>
+    <loc>http://localhost:1313/projects/heartattack/</loc>
   </url><url>
     <loc>http://localhost:1313/projects/</loc>
   </url><url>
