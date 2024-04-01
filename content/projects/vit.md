@@ -4,7 +4,7 @@ type: page
 ---
 
 ## Abstract
-This code implements a Vision Transformer (ViT) model for image classification, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset. Training is performed using Sparse Categorical Crossentropy loss and Adam optimizer, with validation accuracy monitored during training. The trained model achieves a validation accuracy of 81.25% after the first epoch and is evaluated on the test dataset, achieving an accuracy of 73.72%.
+This code implements a Vision Transformer (ViT) model for image classification using the [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) dataset, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset. Training is performed using Sparse Categorical Crossentropy loss and Adam optimizer, with validation accuracy monitored during training. The trained model achieves a validation accuracy of 81.25% after the first epoch and is evaluated on the test dataset, achieving an accuracy of 73.72%.
 
 ## Imports
 ``` python

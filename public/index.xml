@@ -27,21 +27,21 @@
       <link>http://localhost:1313/projects/gzip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/gzip/</guid>
-      <description>Imports import gzip import time import pickle import multiprocessing import warnings import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.neighbors import KNeighborsClassifier from sklearn.metrics import accuracy_score Load Dataset # There are a total of 24639 samples n_samples = 5000 df = pd.read_csv(&amp;#39;/kaggle/input/sentiment-and-emotions-of-tweets/sentiment-emotion-labelled_Dell_tweets.csv&amp;#39;) df = df.truncate(0, n_samples) X = df[&amp;#39;Text&amp;#39;] X.head() y = df[&amp;#39;sentiment&amp;#39;] y.head() Data Cleaning and Preparation X = X.str.replace(r&amp;#39;@[^ ]+&amp;#39;, &amp;#39;&amp;#39;, regex=True) # Remove tagged users X = X.</description>
+      <description>Abstract This code implements a K Nearest Neighbors (KNN) sentiment analysis model using normalized compression distance embeddings, applied to the Sentiment &amp;amp; Emotions Labelled Tweets dataset. The dataset consists of labeled tweets categorized into positive, neutral, and negative sentiments. The code preprocesses the data by cleaning text and converting sentiment labels into numerical values. It then splits the data into training and testing sets. A compression distance normalization method is employed to calculate the normalized compression distances between pairs of tweets.</description>
     </item>
     <item>
       <title>Logistic Regression for Heart Attacks</title>
       <link>http://localhost:1313/projects/heartattack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/heartattack/</guid>
-      <description>Abstract This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis and Prediction Dataset.&#xA;Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.</description>
+      <description>Abstract This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis &amp;amp; Prediction dataset.&#xA;Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.</description>
     </item>
     <item>
       <title>Visual Transformer from Scratch for Pneumonia Detection</title>
       <link>http://localhost:1313/projects/vit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/vit/</guid>
-      <description>Abstract This code implements a Vision Transformer (ViT) model for image classification, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset. Training is performed using Sparse Categorical Crossentropy loss and Adam optimizer, with validation accuracy monitored during training.</description>
+      <description>Abstract This code implements a Vision Transformer (ViT) model for image classification using the Chest X-Ray Images (Pneumonia) dataset, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset.</description>
     </item>
   </channel>
 </rss>

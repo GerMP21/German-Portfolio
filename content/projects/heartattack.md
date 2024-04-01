@@ -4,7 +4,7 @@ type: page
 ---
 
 ## Abstract
-This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis and Prediction Dataset. 
+This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the [Heart Attack Analysis & Prediction](https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset) dataset. 
 
 ## Imports
 ``` python
