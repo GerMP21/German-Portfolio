@@ -3,6 +3,33 @@ title: "Visual Transformer from Scratch for Pneumonia Detection"
 type: page
 ---
 
+## Abstract
+This code implements a Vision Transformer (ViT) model for image classification, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset. Training is performed using Sparse Categorical Crossentropy loss and Adam optimizer, with validation accuracy monitored during training. The trained model achieves a validation accuracy of 81.25% after the first epoch and is evaluated on the test dataset, achieving an accuracy of 73.72%.
+
+## Imports
+``` python
+%pip install einops
+import os
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras import Model
+from tensorflow.keras.layers import Layer
+from tensorflow.keras import Sequential
+from  tensorflow.keras import layers
+from tensorflow import einsum
+from einops import rearrange, repeat
+from einops.layers.tensorflow import Rearrange
+import cv2
+```
+
+## Helper Function
+This function will be used to make sure that input dimensions are represented as tuples (height, width) when needed.
+
+``` python
+def pair(t):
+    return t if isinstance(t, tuple) else (t, t)
+```
+
 ## PreNorm Layer
 Custom layer representing the Pre-Normalization used within the transformer model. It takes the following parameter:
 

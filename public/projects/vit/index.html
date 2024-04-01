@@ -190,7 +190,26 @@
     </div>
 
     <div class="post-content">
-        <h2 id="prenorm-layer">PreNorm Layer</h2>
+        <h2 id="abstract">Abstract</h2>
+<p>This code implements a Vision Transformer (ViT) model for image classification, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset. Training is performed using Sparse Categorical Crossentropy loss and Adam optimizer, with validation accuracy monitored during training. The trained model achieves a validation accuracy of 81.25% after the first epoch and is evaluated on the test dataset, achieving an accuracy of 73.72%.</p>
+<h2 id="imports">Imports</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%</span>pip install einops
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> Model
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tensorflow.keras.layers <span style="color:#f92672">import</span> Layer
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tensorflow.keras <span style="color:#f92672">import</span> Sequential
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span>  tensorflow.keras <span style="color:#f92672">import</span> layers
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> tensorflow <span style="color:#f92672">import</span> einsum
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> einops <span style="color:#f92672">import</span> rearrange, repeat
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> einops.layers.tensorflow <span style="color:#f92672">import</span> Rearrange
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2
+</span></span></code></pre></div><h2 id="helper-function">Helper Function</h2>
+<p>This function will be used to make sure that input dimensions are represented as tuples (height, width) when needed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">pair</span>(t):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> t <span style="color:#66d9ef">if</span> isinstance(t, tuple) <span style="color:#66d9ef">else</span> (t, t)
+</span></span></code></pre></div><h2 id="prenorm-layer">PreNorm Layer</h2>
 <p>Custom layer representing the Pre-Normalization used within the transformer model. It takes the following parameter:</p>
 <ul>
 <li><strong>fn</strong>: The function to be applied to the normalized input. In the transformer, this function can be either the attention mechanism or the MLP.</li>
