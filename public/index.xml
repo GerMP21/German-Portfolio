@@ -22,5 +22,12 @@
       <guid>http://localhost:1313/projects/adventureworks/</guid>
       <description>Business Request &amp;amp; User Stories The business request for this project was an executive sales report for sales managers. Based on the request that was made from the business we following user stories were defined to fulfill delivery and ensure that acceptance criteria’s were maintained throughout the project.&#xA;As a (role) I want (request / demand) So that I can (user value) Acceptance Criteria Sales Manager A dashboard overview of internet sales Follow sales over time against budget A Power Bi dashboard with graphs and KPIs comparing sales against budget.</description>
     </item>
+    <item>
+      <title>Visual Transformer from Scratch for Pneumonia Detection</title>
+      <link>http://localhost:1313/projects/vit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/vit/</guid>
+      <description>PreNorm Layer Custom layer representing the Pre-Normalization used within the transformer model. It takes the following parameter:&#xA;fn: The function to be applied to the normalized input. In the transformer, this function can be either the attention mechanism or the MLP. The call method is where the actual pre-normalization takes place. It takes the following parameters:&#xA;x: The input tensor passed through the layer normalization. training: Used to enable/disable dropout layers based on the training mode.</description>
+    </item>
   </channel>
 </rss>

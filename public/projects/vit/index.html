@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Visual Transformer from Scratch for Pneumonia Detection</title>
+    <meta name="description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta name="keywords" content='blog, portfolio, data, data analysis, data science, data engineering, machine learning, deep learning'>
+
+    <meta property="og:url" content="http://localhost:1313/projects/vit/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Visual Transformer from Scratch for Pneumonia Detection">
+    <meta property="og:description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta property="og:image" content="http://localhost:1313/images/avatar.jpg">
+    <meta property="og:image:secure_url" content="http://localhost:1313/images/avatar.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Visual Transformer from Scratch for Pneumonia Detection">
+    <meta name="twitter:description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta property="twitter:domain" content="http://localhost:1313/projects/vit/">
+    <meta property="twitter:url" content="http://localhost:1313/projects/vit/">
+    <meta name="twitter:image" content="http://localhost:1313/images/avatar.jpg">
+
+    
+    <link rel="canonical" href="http://localhost:1313/projects/vit/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:1313/">
+                <img src='/images/avatar.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:1313/">German Martinez</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/germp21"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.buymeacoffee.com/germp21"><span data-feather='coffee'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/germp21"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.buymeacoffee.com/germp21"><span data-feather='coffee'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Visual Transformer from Scratch for Pneumonia Detection</h1>
+    </div>
+
+    <div class="post-content">
+        <h2 id="prenorm-layer">PreNorm Layer</h2>
+<p>Custom layer representing the Pre-Normalization used within the transformer model. It takes the following parameter:</p>
+<ul>
+<li><strong>fn</strong>: The function to be applied to the normalized input. In the transformer, this function can be either the attention mechanism or the MLP.</li>
+</ul>
+<p>The call method is where the actual pre-normalization takes place. It takes the following parameters:</p>
+<ul>
+<li><strong>x</strong>: The input tensor passed through the layer normalization.</li>
+<li><strong>training</strong>: Used to enable/disable dropout layers based on the training mode.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PreNorm</span>(Layer):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, fn):
+</span></span><span style="display:flex;"><span>        super(PreNorm, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>norm <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>LayerNormalization()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fn <span style="color:#f92672">=</span> fn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, x, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>fn(self<span style="color:#f92672">.</span>norm(x), training<span style="color:#f92672">=</span>training)
+</span></span></code></pre></div><h2 id="multi-layer-perceptron-layer">Multi-Layer Perceptron Layer</h2>
+<p>Custom layer representing the Multi-Layer Perceptron used within the transformer model. It takes the following parameters:</p>
+<ul>
+<li><strong>dim</strong>: The output dimension of the MLP layer, which is also the input and output dimension of each transformer block in the ViT model.</li>
+<li><strong>hidden_dim</strong>: The dimension of the hidden layer in the MLP. It determines the intermediate dimension between the input and output of the two dense layers.</li>
+<li><strong>dropout</strong>: The dropout rate applied to the output of both dense layers in the MLP. By default, it is set to 0.0 (no dropout).</li>
+</ul>
+<p>The call method takes the following parameters:</p>
+<ul>
+<li><strong>x</strong>: The input tensor that is processed through the MLP.</li>
+<li><strong>training</strong>: Used to enable/disable dropout layers based on the training mode.</li>
+</ul>
+<p>The GELU activation function has two implementations: the approximate version and the exact version. The approximate flag can be set to True to use the approximate GELU. By default, the exact GELU is used.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MLP</span>(Layer):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, dim, hidden_dim, dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        super(MLP, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">GELU</span>():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gelu</span>(x, approximate<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> approximate:
+</span></span><span style="display:flex;"><span>                    coeff <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(<span style="color:#ae81ff">0.044715</span>, x<span style="color:#f92672">.</span>dtype)
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> x <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> tf<span style="color:#f92672">.</span>tanh(<span style="color:#ae81ff">0.7978845608028654</span> <span style="color:#f92672">*</span> (x <span style="color:#f92672">+</span> coeff <span style="color:#f92672">*</span> tf<span style="color:#f92672">.</span>pow(x, <span style="color:#ae81ff">3</span>))))
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> x <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> tf<span style="color:#f92672">.</span>math<span style="color:#f92672">.</span>erf(x <span style="color:#f92672">/</span> tf<span style="color:#f92672">.</span>cast(<span style="color:#ae81ff">1.4142135623730951</span>, x<span style="color:#f92672">.</span>dtype)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> layers<span style="color:#f92672">.</span>Activation(gelu)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>net <span style="color:#f92672">=</span> Sequential([
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>Dense(units<span style="color:#f92672">=</span>hidden_dim),
+</span></span><span style="display:flex;"><span>            GELU(),
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>Dropout(rate<span style="color:#f92672">=</span>dropout),
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>Dense(units<span style="color:#f92672">=</span>dim),
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>Dropout(rate<span style="color:#f92672">=</span>dropout)
+</span></span><span style="display:flex;"><span>        ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, x, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>net(x, training<span style="color:#f92672">=</span>training)
+</span></span></code></pre></div><h2 id="attention-layer">Attention Layer</h2>
+<p>Custom layer representing the attention mechanism used in the transformer model. It takes the following parameters:</p>
+<ul>
+<li><strong>dim</strong>: The input and output dimension of the attention layer.</li>
+<li><strong>heads</strong>: The number of attention heads.</li>
+<li><strong>dim_head</strong>: The dimension of each attention head.</li>
+<li><strong>dropout</strong>: The dropout rate applied to the attention weights.</li>
+</ul>
+<p>The call method is where the actual attention calculation takes place. It takes the following parameters:</p>
+<ul>
+<li><strong>x</strong>: The input tensor passed through the layer normalization.</li>
+<li><strong>training</strong>: Used to enable/disable dropout layers based on the training mode.</li>
+</ul>
+<p>The Attention class uses two sub-layers:</p>
+<ul>
+<li><strong>self.attend</strong>: This is the softmax activation function, which calculates the attention weights using the dot products between queries and keys. The softmax ensures that the attention weights are normalized and sum up to 1.</li>
+<li><strong>self.to_qkv</strong>: This is a linear transformation layer without biases, projecting the input tensor x to the queries, keys, and values. The output dimension of this layer is inner_dim * 3, where inner_dim is the dimension of queries, keys, and values for multi-head attention.</li>
+<li><strong>self.to_out</strong>: This is a list of layers used to project the attention output back to the original input dimension dim, followed by dropout. If project_out is False (which happens when there is only one attention head and its dimension is the same as dim), this layer is an empty list, indicating that no additional projection is needed.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Attention</span>(Layer):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, dim, heads<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, dim_head<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span>, dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        super(Attention, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        inner_dim <span style="color:#f92672">=</span> dim_head <span style="color:#f92672">*</span> heads
+</span></span><span style="display:flex;"><span>        project_out <span style="color:#f92672">=</span> <span style="color:#f92672">not</span> (heads <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">and</span> dim_head <span style="color:#f92672">==</span> dim)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>heads <span style="color:#f92672">=</span> heads
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>scale <span style="color:#f92672">=</span> dim_head <span style="color:#f92672">**</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>attend <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Softmax()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>to_qkv <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Dense(units<span style="color:#f92672">=</span>inner_dim <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>, use_bias<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> project_out:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>to_out <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>                layers<span style="color:#f92672">.</span>Dense(units<span style="color:#f92672">=</span>dim),
+</span></span><span style="display:flex;"><span>                layers<span style="color:#f92672">.</span>Dropout(rate<span style="color:#f92672">=</span>dropout)
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>to_out <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>to_out <span style="color:#f92672">=</span> Sequential(self<span style="color:#f92672">.</span>to_out)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, x, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        qkv <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>to_qkv(x)
+</span></span><span style="display:flex;"><span>        qkv <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>split(qkv, num_or_size_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        q, k, v <span style="color:#f92672">=</span> map(<span style="color:#66d9ef">lambda</span> t: rearrange(t, <span style="color:#e6db74">&#39;b n (h d) -&gt; b h n d&#39;</span>, h<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>heads), qkv)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># dots = tf.matmul(q, tf.transpose(k, perm=[0, 1, 3, 2])) * self.scale</span>
+</span></span><span style="display:flex;"><span>        dots <span style="color:#f92672">=</span> einsum(<span style="color:#e6db74">&#39;b h i d, b h j d -&gt; b h i j&#39;</span>, q, k) <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>scale
+</span></span><span style="display:flex;"><span>        attn <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>attend(dots)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># x = tf.matmul(attn, v)</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> einsum(<span style="color:#e6db74">&#39;b h i j, b h j d -&gt; b h i d&#39;</span>, attn, v)
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> rearrange(x, <span style="color:#e6db74">&#39;b h n d -&gt; b n (h d)&#39;</span>)
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>to_out(x, training<span style="color:#f92672">=</span>training)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span></code></pre></div><h2 id="transformer-layer">Transformer Layer</h2>
+<p>Custom layer representing the core building block of the transformer model. It takes the following parameters:</p>
+<ul>
+<li><strong>dim</strong>: The output dimension of the transformer block.</li>
+<li><strong>depth</strong>: The number of transformer blocks to stack.</li>
+<li><strong>heads</strong>: The number of attention heads in the multi-head attention mechanism.</li>
+<li><strong>dim_head</strong>: The dimension of each attention head. The total dimension of queries, keys, and values will be dim_head * heads.</li>
+<li><strong>mlp_dim</strong>: The dimension of the hidden layer in the MLP used within the transformer block.</li>
+<li><strong>dropout</strong>: The dropout rate applied to the output of both attention and MLP layers in the transformer block.</li>
+</ul>
+<p>The call method is where the input tensor x is processed through the transformer blocks. It takes the following parameters:</p>
+<ul>
+<li><strong>x</strong>: The input tensor passed through the layer normalization.</li>
+<li><strong>training</strong>: Used to enable/disable dropout layers based on the training mode.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Transformer</span>(Layer):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, dim, depth, heads, dim_head, mlp_dim, dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        super(Transformer, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>layers <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(depth):
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>append([
+</span></span><span style="display:flex;"><span>                PreNorm(Attention(dim, heads<span style="color:#f92672">=</span>heads, dim_head<span style="color:#f92672">=</span>dim_head, dropout<span style="color:#f92672">=</span>dropout)),
+</span></span><span style="display:flex;"><span>                PreNorm(MLP(dim, mlp_dim, dropout<span style="color:#f92672">=</span>dropout))
+</span></span><span style="display:flex;"><span>            ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, x, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> attn, mlp <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>layers:
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> attn(x, training<span style="color:#f92672">=</span>training) <span style="color:#f92672">+</span> x
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> mlp(x, training<span style="color:#f92672">=</span>training) <span style="color:#f92672">+</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span></code></pre></div><h2 id="visual-transformer-model">Visual Transformer Model</h2>
+<p>Custom model representing the Vision Transformer model. It takes the following parameters:</p>
+<ul>
+<li><strong>image_size</strong>: The size of the input image. If you have rectangular images, the image_size should be the maximum of the width and height to maintain aspect ratio.</li>
+<li><strong>patch_size</strong>: The size of each patch in the image. The image_size must be divisible by patch_size.</li>
+<li><strong>num_classes</strong>: The number of classes to classify. It represents the output dimension of the final classification layer.</li>
+<li><strong>dim</strong>: The output dimension of the transformer block. This is usually the hidden dimension of the transformer.</li>
+<li><strong>depth</strong>: The number of transformer blocks to stack.</li>
+<li><strong>heads</strong>: The number of attention heads in the multi-head attention mechanism.</li>
+<li><strong>mlp_dim</strong>: The dimension of the hidden layer in the MLP used within the transformer block.</li>
+<li><strong>pool</strong>: The pooling type for obtaining the final classification. It can be either &lsquo;cls&rsquo; (using the class token) or &lsquo;mean&rsquo; (using mean pooling).</li>
+<li><strong>dim_head</strong>: The dimension of each attention head. The total dimension of queries, keys, and values will be dim_head * heads.</li>
+<li><strong>dropout</strong>: The dropout rate applied to the output of both attention and MLP layers in the transformer block. By default, it is set to 0.0 (no dropout).</li>
+<li><strong>emb_dropout</strong>: The embedding dropout rate. It is applied to the output of the patch embeddings and the positional embeddings.</li>
+</ul>
+<p>The call method is the forward pass of the model. It takes the following parameters:</p>
+<ul>
+<li><strong>img</strong>: This is the input image tensor that will be passed through the ViT model.</li>
+<li><strong>training</strong>: This is a boolean argument that controls whether the model is in training mode or not. It is used to enable or disable certain operations, such as dropout layers, based on the training status. By default, it is set to True, indicating that the model is in training mode.</li>
+</ul>
+<p>The shape of img should be (batch_size, image_height, image_width, num_channels), where:</p>
+<ul>
+<li><strong>batch_size</strong>: The number of input images in a batch.</li>
+<li><strong>image_height</strong>: The height of the input image.</li>
+<li><strong>image_width</strong>: The width of the input image.</li>
+<li><strong>num_channels</strong>: The number of channels in the input image (e.g., 3 for RGB images).</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViT</span>(Model):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, image_size, patch_size, num_classes, dim, depth, heads, mlp_dim,
+</span></span><span style="display:flex;"><span>                 pool<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cls&#39;</span>, dim_head<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span>, dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, emb_dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>):
+</span></span><span style="display:flex;"><span>        super(ViT, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        image_height, image_width <span style="color:#f92672">=</span> pair(image_size)
+</span></span><span style="display:flex;"><span>        patch_height, patch_width <span style="color:#f92672">=</span> pair(patch_size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> image_height <span style="color:#f92672">%</span> patch_height <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> image_width <span style="color:#f92672">%</span> patch_width <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;Image dimensions must be divisible by the patch size.&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        num_patches <span style="color:#f92672">=</span> (image_height <span style="color:#f92672">//</span> patch_height) <span style="color:#f92672">*</span> (image_width <span style="color:#f92672">//</span> patch_width)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> pool <span style="color:#f92672">in</span> {<span style="color:#e6db74">&#39;cls&#39;</span>, <span style="color:#e6db74">&#39;mean&#39;</span>}, <span style="color:#e6db74">&#39;pool type must be either cls (cls token) or mean (mean pooling)&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>patch_embedding <span style="color:#f92672">=</span> Sequential([
+</span></span><span style="display:flex;"><span>            Rearrange(<span style="color:#e6db74">&#39;b (h p1) (w p2) c -&gt; b (h w) (p1 p2 c)&#39;</span>, p1<span style="color:#f92672">=</span>patch_height, p2<span style="color:#f92672">=</span>patch_width),
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>Dense(units<span style="color:#f92672">=</span>dim)
+</span></span><span style="display:flex;"><span>        ], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;patch_embedding&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>pos_embedding <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable(initial_value<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal([<span style="color:#ae81ff">1</span>, num_patches <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, dim]))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>cls_token <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable(initial_value<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, dim]))
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>dropout <span style="color:#f92672">=</span> layers<span style="color:#f92672">.</span>Dropout(rate<span style="color:#f92672">=</span>emb_dropout)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transformer <span style="color:#f92672">=</span> Transformer(dim, depth, heads, dim_head, mlp_dim, dropout)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>pool <span style="color:#f92672">=</span> pool
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mlp_head <span style="color:#f92672">=</span> Sequential([
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>LayerNormalization(),
+</span></span><span style="display:flex;"><span>            layers<span style="color:#f92672">.</span>Dense(units<span style="color:#f92672">=</span>num_classes)
+</span></span><span style="display:flex;"><span>        ], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mlp_head&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, img, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, <span style="color:#f92672">**</span>kwargs):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>patch_embedding(img)
+</span></span><span style="display:flex;"><span>        b, n, d <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        cls_tokens <span style="color:#f92672">=</span> repeat(self<span style="color:#f92672">.</span>cls_token, <span style="color:#e6db74">&#39;() n d -&gt; b n d&#39;</span>, b<span style="color:#f92672">=</span>b)
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([cls_tokens, x], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>pos_embedding[:, :(n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)]
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>dropout(x, training<span style="color:#f92672">=</span>training)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>transformer(x, training<span style="color:#f92672">=</span>training)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>pool <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;mean&#39;</span>:
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_mean(x, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> x[:, <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mlp_head(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span></code></pre></div><h2 id="load-dataset">Load Dataset</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_and_preprocess_images</span>(image_folder, target_size):
+</span></span><span style="display:flex;"><span>    images <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    labels <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> label, class_name <span style="color:#f92672">in</span> enumerate(os<span style="color:#f92672">.</span>listdir(image_folder)):
+</span></span><span style="display:flex;"><span>        class_folder <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(image_folder, class_name)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> image_name <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(class_folder):
+</span></span><span style="display:flex;"><span>            image_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(class_folder, image_name)
+</span></span><span style="display:flex;"><span>            image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(image_path)
+</span></span><span style="display:flex;"><span>            image <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>resize(image, target_size)  <span style="color:#75715e"># Resize all images to a target size</span>
+</span></span><span style="display:flex;"><span>            image <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float32) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255.0</span>  <span style="color:#75715e"># Normalize the image pixel values</span>
+</span></span><span style="display:flex;"><span>            images<span style="color:#f92672">.</span>append(image)
+</span></span><span style="display:flex;"><span>            labels<span style="color:#f92672">.</span>append(label)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(images), np<span style="color:#f92672">.</span>array(labels)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Define the image size for ViT</span>
+</span></span><span style="display:flex;"><span>image_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>)  <span style="color:#75715e"># You can choose an appropriate size based on the images</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define the paths to the train and test folders</span>
+</span></span><span style="display:flex;"><span>train_folder <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/kaggle/input/chest-xray-pneumonia/chest_xray/train&#34;</span>
+</span></span><span style="display:flex;"><span>val_folder <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/kaggle/input/chest-xray-pneumonia/chest_xray/val&#34;</span>
+</span></span><span style="display:flex;"><span>test_folder <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/kaggle/input/chest-xray-pneumonia/chest_xray/test&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read and preprocess images from the train and test folders</span>
+</span></span><span style="display:flex;"><span>train_images, train_labels <span style="color:#f92672">=</span> read_and_preprocess_images(train_folder, image_size)
+</span></span><span style="display:flex;"><span>val_images, val_labels <span style="color:#f92672">=</span> read_and_preprocess_images(val_folder, image_size)
+</span></span><span style="display:flex;"><span>test_images, test_labels <span style="color:#f92672">=</span> read_and_preprocess_images(test_folder, image_size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert labels to one-hot encoded vectors</span>
+</span></span><span style="display:flex;"><span>num_classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>train_labels <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>one_hot(train_labels, depth<span style="color:#f92672">=</span>num_classes)
+</span></span><span style="display:flex;"><span>val_labels <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>one_hot(val_labels, depth<span style="color:#f92672">=</span>num_classes)
+</span></span><span style="display:flex;"><span>test_labels <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>one_hot(test_labels, depth<span style="color:#f92672">=</span>num_classes)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a dataset from the training images and labels</span>
+</span></span><span style="display:flex;"><span>batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>  <span style="color:#75715e"># You can choose an appropriate batch size based on your memory capacity</span>
+</span></span><span style="display:flex;"><span>train_dataset <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>Dataset<span style="color:#f92672">.</span>from_tensor_slices((train_images, train_labels))
+</span></span><span style="display:flex;"><span>train_dataset <span style="color:#f92672">=</span> train_dataset<span style="color:#f92672">.</span>shuffle(buffer_size<span style="color:#f92672">=</span>train_images<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])<span style="color:#f92672">.</span>batch(batch_size)
+</span></span></code></pre></div><h2 id="training">Training</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train_model</span>(model, train_dataset, val_images, val_labels, epochs, batch_size):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create a SparseCategoricalCrossentropy loss function</span>
+</span></span><span style="display:flex;"><span>    loss_fn <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>losses<span style="color:#f92672">.</span>SparseCategoricalCrossentropy(from_logits<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create an Adam optimizer with a learning rate of 1e-4</span>
+</span></span><span style="display:flex;"><span>    optimizer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>optimizers<span style="color:#f92672">.</span>Adam(learning_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Define a train_step function, which will be called in each training iteration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train_step</span>(images, labels):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Create a GradientTape to compute gradients for trainable variables</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>GradientTape() <span style="color:#66d9ef">as</span> tape:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Make predictions using the model with training=True to enable dropout, etc.</span>
+</span></span><span style="display:flex;"><span>            predictions <span style="color:#f92672">=</span> model(images, training<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Compute the loss between the predicted values and the actual labels</span>
+</span></span><span style="display:flex;"><span>            loss <span style="color:#f92672">=</span> loss_fn(labels, predictions)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Calculate gradients of the loss with respect to trainable variables</span>
+</span></span><span style="display:flex;"><span>        gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, model<span style="color:#f92672">.</span>trainable_variables)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Apply the gradients to update the model&#39;s trainable variables</span>
+</span></span><span style="display:flex;"><span>        optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, model<span style="color:#f92672">.</span>trainable_variables))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Return the loss for this training step</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> loss
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Training loop: run for the specified number of epochs</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(epochs):
+</span></span><span style="display:flex;"><span>        total_loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        num_batches <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Print the number of epochs</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Epoch </span><span style="color:#e6db74">{</span>epoch <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>epochs<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Iterate over the training dataset in batches</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> batch_images, batch_labels <span style="color:#f92672">in</span> train_dataset:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Perform a training step for the current batch and get the loss</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Convert one-hot encoded labels to integer labels</span>
+</span></span><span style="display:flex;"><span>            labels <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>argmax(batch_labels, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>            loss <span style="color:#f92672">=</span> train_step(batch_images, labels)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Accumulate the loss for this epoch</span>
+</span></span><span style="display:flex;"><span>            total_loss <span style="color:#f92672">+=</span> loss
+</span></span><span style="display:flex;"><span>            num_batches <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Calculate the average loss for this epoch</span>
+</span></span><span style="display:flex;"><span>        average_loss <span style="color:#f92672">=</span> total_loss <span style="color:#f92672">/</span> num_batches
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        val_predictions <span style="color:#f92672">=</span> vit(val_images, training<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        val_accuracy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_mean(tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>metrics<span style="color:#f92672">.</span>categorical_accuracy(val_labels, val_predictions))
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Print the average loss of the model</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Train Loss: </span><span style="color:#e6db74">{</span>average_loss<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Val Accuracy: </span><span style="color:#e6db74">{</span>val_accuracy<span style="color:#f92672">.</span>numpy()<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> val_accuracy<span style="color:#f92672">.</span>numpy() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.80</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Return the trained model</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> model
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Define the ViT model</span>
+</span></span><span style="display:flex;"><span>vit <span style="color:#f92672">=</span> ViT(
+</span></span><span style="display:flex;"><span>    image_size<span style="color:#f92672">=</span>image_size,
+</span></span><span style="display:flex;"><span>    patch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>,  <span style="color:#75715e"># You can choose an appropriate patch size based on the image size and complexity</span>
+</span></span><span style="display:flex;"><span>    num_classes<span style="color:#f92672">=</span>num_classes,
+</span></span><span style="display:flex;"><span>    dim<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>,
+</span></span><span style="display:flex;"><span>    depth<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>,
+</span></span><span style="display:flex;"><span>    heads<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>    mlp_dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>,
+</span></span><span style="display:flex;"><span>    dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>,
+</span></span><span style="display:flex;"><span>    emb_dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model on the new dataset</span>
+</span></span><span style="display:flex;"><span>epochs <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>vit <span style="color:#f92672">=</span> train_model(vit, train_dataset, val_images, val_labels, epochs, batch_size)
+</span></span></code></pre></div><blockquote>
+<p>Epoch 1/10</p>
+<p>Train Loss: 0.5387</p>
+<p>Val Accuracy: 0.8125</p>
+</blockquote>
+<h2 id="test-model">Test Model</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Evaluate the model on the test dataset</span>
+</span></span><span style="display:flex;"><span>test_predictions <span style="color:#f92672">=</span> vit(test_images, training<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>test_accuracy <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_mean(tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>metrics<span style="color:#f92672">.</span>categorical_accuracy(test_labels, test_predictions))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Test Accuracy: </span><span style="color:#e6db74">{</span>test_accuracy<span style="color:#f92672">.</span>numpy()<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span></code></pre></div><blockquote>
+<p>Test Accuracy: 0.7372</p>
+</blockquote>
+
+    </div>
+</div>
+
+
+
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 German Martinez</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
