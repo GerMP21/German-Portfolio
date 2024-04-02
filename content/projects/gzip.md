@@ -3,6 +3,8 @@ title: "K Nearest Neighbour Sentiment Analysis with Gzip Embeddings"
 type: page
 ---
 
+[Kaggle Project](https://www.kaggle.com/code/germp21/knn-gzip-sentiment-analysis)
+
 ## Abstract
 This code implements a K Nearest Neighbors (KNN) sentiment analysis model using normalized compression distance embeddings, applied to the [Sentiment & Emotions Labelled Tweets](https://www.kaggle.com/datasets/ankitkumar2635/sentiment-and-emotions-of-tweets) dataset. The dataset consists of labeled tweets categorized into positive, neutral, and negative sentiments. The code preprocesses the data by cleaning text and converting sentiment labels into numerical values. It then splits the data into training and testing sets. A compression distance normalization method is employed to calculate the normalized compression distances between pairs of tweets. The training set's normalized compression distances are computed in parallel using multiprocessing for efficiency. The KNN model is trained using different numbers of neighbors (4, 5, 6, and 7), and their accuracies are evaluated on the test set. The model achieves accuracies ranging from approximately 51% to 60%, demonstrating the effectiveness of compression distances as features for sentiment analysis.
 

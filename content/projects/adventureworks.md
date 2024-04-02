@@ -3,6 +3,8 @@ title: "AdventureWorks Sales Analysis and Dashboard"
 type: page
 ---
 
+[Github Project](https://github.com/GerMP21/AdventureWorks-Sales-Analysis)
+
 ![Sales Overview](/images/adventureworks/salesoverview.png "Sales Overview")
 
 ## Business Request & User Stories

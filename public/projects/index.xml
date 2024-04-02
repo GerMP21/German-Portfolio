@@ -12,35 +12,35 @@
       <link>http://localhost:1313/projects/adventureworks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/adventureworks/</guid>
-      <description>Business Request &amp;amp; User Stories The business request for this project was an executive sales report for sales managers. Based on the request that was made from the business we following user stories were defined to fulfill delivery and ensure that acceptance criteria’s were maintained throughout the project.&#xA;As a (role) I want (request / demand) So that I can (user value) Acceptance Criteria Sales Manager A dashboard overview of internet sales Follow sales over time against budget A Power Bi dashboard with graphs and KPIs comparing sales against budget.</description>
+      <description>Github Project&#xA;Business Request &amp;amp; User Stories The business request for this project was an executive sales report for sales managers. Based on the request that was made from the business we following user stories were defined to fulfill delivery and ensure that acceptance criteria’s were maintained throughout the project.&#xA;As a (role) I want (request / demand) So that I can (user value) Acceptance Criteria Sales Manager A dashboard overview of internet sales Follow sales over time against budget A Power Bi dashboard with graphs and KPIs comparing sales against budget.</description>
     </item>
     <item>
       <title>K Nearest Neighbour Sentiment Analysis with Gzip Embeddings</title>
       <link>http://localhost:1313/projects/gzip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/gzip/</guid>
-      <description>Abstract This code implements a K Nearest Neighbors (KNN) sentiment analysis model using normalized compression distance embeddings, applied to the Sentiment &amp;amp; Emotions Labelled Tweets dataset. The dataset consists of labeled tweets categorized into positive, neutral, and negative sentiments. The code preprocesses the data by cleaning text and converting sentiment labels into numerical values. It then splits the data into training and testing sets. A compression distance normalization method is employed to calculate the normalized compression distances between pairs of tweets.</description>
+      <description>Kaggle Project&#xA;Abstract This code implements a K Nearest Neighbors (KNN) sentiment analysis model using normalized compression distance embeddings, applied to the Sentiment &amp;amp; Emotions Labelled Tweets dataset. The dataset consists of labeled tweets categorized into positive, neutral, and negative sentiments. The code preprocesses the data by cleaning text and converting sentiment labels into numerical values. It then splits the data into training and testing sets. A compression distance normalization method is employed to calculate the normalized compression distances between pairs of tweets.</description>
     </item>
     <item>
       <title>Logistic Regression for Heart Attacks</title>
       <link>http://localhost:1313/projects/heartattack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/heartattack/</guid>
-      <description>Abstract This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis &amp;amp; Prediction dataset.&#xA;Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.</description>
+      <description>Kaggle Project&#xA;Abstract This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis &amp;amp; Prediction dataset.&#xA;Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.</description>
     </item>
     <item>
       <title>Magnificent Seven Stock Market Analysis</title>
       <link>http://localhost:1313/projects/seven/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/seven/</guid>
-      <description>We&amp;rsquo;ll be answering the following questions along the way:&#xA;1.) What was the change in price of the stock over time? 2.) What was the daily return of the stock on average? 3.) What was the moving average of the various stocks? 4.) What was the correlation between different stocks&#39;? 5.) How much value do we put at risk by investing in a particular stock? 6.) How can we attempt to predict future stock behavior?</description>
+      <description>Kaggle Project&#xA;We&amp;rsquo;ll be answering the following questions along the way:&#xA;1.) What was the change in price of the stock over time? 2.) What was the daily return of the stock on average? 3.) What was the moving average of the various stocks? 4.) What was the correlation between different stocks&#39;? 5.) How much value do we put at risk by investing in a particular stock? 6.) How can we attempt to predict future stock behavior?</description>
     </item>
     <item>
       <title>Visual Transformer from Scratch for Pneumonia Detection</title>
       <link>http://localhost:1313/projects/vit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/projects/vit/</guid>
-      <description>Abstract This code implements a Vision Transformer (ViT) model for image classification using the Chest X-Ray Images (Pneumonia) dataset, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset.</description>
+      <description>Kaggle Project&#xA;Abstract This code implements a Vision Transformer (ViT) model for image classification using the Chest X-Ray Images (Pneumonia) dataset, comprising custom layers such as PreNorm, Multi-Layer Perceptron (MLP), Attention, and Transformer, along with data preprocessing functions. The ViT model architecture consists of patch embedding, positional embedding, multi-head self-attention mechanism, and a multi-layer perceptron for feature extraction and classification. The code also includes functions for loading and preprocessing image data from a given dataset.</description>
     </item>
   </channel>
 </rss>

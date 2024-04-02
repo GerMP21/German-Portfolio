@@ -3,6 +3,8 @@ title: "Magnificent Seven Stock Market Analysis"
 type: page
 ---
 
+[Kaggle Project](https://www.kaggle.com/code/germp21/magnificent-seven-stock-market-analysis)
+
 We'll be answering the following questions along the way:
 
     1.) What was the change in price of the stock over time?
