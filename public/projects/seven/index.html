@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Magnificent Seven Stock Market Analysis</title>
+    <meta name="description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta name="keywords" content='blog, portfolio, data, data analysis, data science, data engineering, machine learning, deep learning'>
+
+    <meta property="og:url" content="http://localhost:1313/projects/seven/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Magnificent Seven Stock Market Analysis">
+    <meta property="og:description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta property="og:image" content="http://localhost:1313/images/avatar.jpg">
+    <meta property="og:image:secure_url" content="http://localhost:1313/images/avatar.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Magnificent Seven Stock Market Analysis">
+    <meta name="twitter:description" content="A data enthusiast looking to leverage my skills to generate value">
+    <meta property="twitter:domain" content="http://localhost:1313/projects/seven/">
+    <meta property="twitter:url" content="http://localhost:1313/projects/seven/">
+    <meta name="twitter:image" content="http://localhost:1313/images/avatar.jpg">
+
+    
+    <link rel="canonical" href="http://localhost:1313/projects/seven/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:1313/">
+                <img src='/images/avatar.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:1313/">German Martinez</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/germp21"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.buymeacoffee.com/germp21"><span data-feather='coffee'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/germp21"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.buymeacoffee.com/germp21"><span data-feather='coffee'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Magnificent Seven Stock Market Analysis</h1>
+    </div>
+
+    <div class="post-content">
+        <p>We&rsquo;ll be answering the following questions along the way:</p>
+<pre><code>1.) What was the change in price of the stock over time?
+2.) What was the daily return of the stock on average?
+3.) What was the moving average of the various stocks?
+4.) What was the correlation between different stocks'?
+5.) How much value do we put at risk by investing in a particular stock?
+6.) How can we attempt to predict future stock behavior? (Predicting the closing price stock price of NVDA using LSTM)
+</code></pre>
+<h2 id="imports-and-config">Imports and Config</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">!</span>pip install <span style="color:#f92672">-</span>q yfinance
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pandas_datareader.data <span style="color:#f92672">import</span> DataReader
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pandas_datareader <span style="color:#f92672">import</span> data <span style="color:#66d9ef">as</span> pdr
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> yfinance <span style="color:#66d9ef">as</span> yf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.models <span style="color:#f92672">import</span> Sequential
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dense, LSTM
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>set_style(<span style="color:#e6db74">&#39;whitegrid&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#34;fivethirtyeight&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span>matplotlib inline
+</span></span><span style="display:flex;"><span>yf<span style="color:#f92672">.</span>pdr_override()
+</span></span></code></pre></div><h2 id="1-what-was-the-change-in-price-of-the-stock-overtime">1. What was the change in price of the stock overtime?</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># The tech stocks we&#39;ll use for this analysis</span>
+</span></span><span style="display:flex;"><span>tech_list <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;AAPL&#39;</span>, <span style="color:#e6db74">&#39;GOOG&#39;</span>, <span style="color:#e6db74">&#39;MSFT&#39;</span>, <span style="color:#e6db74">&#39;AMZN&#39;</span>, <span style="color:#e6db74">&#34;META&#34;</span>, <span style="color:#e6db74">&#34;NVDA&#34;</span>, <span style="color:#e6db74">&#34;TSLA&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>end <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>start <span style="color:#f92672">=</span> datetime(end<span style="color:#f92672">.</span>year <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, end<span style="color:#f92672">.</span>month, end<span style="color:#f92672">.</span>day)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> stock <span style="color:#f92672">in</span> tech_list:
+</span></span><span style="display:flex;"><span>    globals()[stock] <span style="color:#f92672">=</span> yf<span style="color:#f92672">.</span>download(stock, start, end)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>company_list <span style="color:#f92672">=</span> [AAPL, GOOG, MSFT, AMZN, META, NVDA, TSLA]
+</span></span><span style="display:flex;"><span>company_name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;APPLE&#34;</span>, <span style="color:#e6db74">&#34;GOOGLE&#34;</span>, <span style="color:#e6db74">&#34;MICROSOFT&#34;</span>, <span style="color:#e6db74">&#34;AMAZON&#34;</span>, <span style="color:#e6db74">&#34;META&#34;</span>, <span style="color:#e6db74">&#34;NVIDIA&#34;</span>, <span style="color:#e6db74">&#34;TESLA&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> company, com_name <span style="color:#f92672">in</span> zip(company_list, company_name):
+</span></span><span style="display:flex;"><span>    company[<span style="color:#e6db74">&#34;company_name&#34;</span>] <span style="color:#f92672">=</span> com_name
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat(company_list, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>tail(<span style="color:#ae81ff">10</span>)
+</span></span></code></pre></div><p><img src="/images/seven/tail.png" alt="tail" title="tail"></p>
+<h3 id="descriptive-statistics-about-the-data">Descriptive Statistics about the Data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Summary Stats</span>
+</span></span><span style="display:flex;"><span>NVDA<span style="color:#f92672">.</span>describe()
+</span></span></code></pre></div><p><img src="/images/seven/describe.png" alt="describe" title="describe"></p>
+<h3 id="information-about-the-data">Information About the Data</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># General info</span>
+</span></span><span style="display:flex;"><span>NVDA<span style="color:#f92672">.</span>info()
+</span></span></code></pre></div><p><img src="/images/seven/info.png" alt="info" title="info"></p>
+<h3 id="closing-price">Closing Price</h3>
+<p>The closing price is the last price at which the stock is traded during the regular trading day.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplots_adjust(top<span style="color:#f92672">=</span><span style="color:#ae81ff">1.25</span>, bottom<span style="color:#f92672">=</span><span style="color:#ae81ff">1.2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, company <span style="color:#f92672">in</span> enumerate(company_list, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, i)
+</span></span><span style="display:flex;"><span>    company[<span style="color:#e6db74">&#39;Adj Close&#39;</span>]<span style="color:#f92672">.</span>plot()
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Adj Close&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Closing Price of </span><span style="color:#e6db74">{</span>tech_list[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/images/seven/closing.png" alt="closing" title="closing"></p>
+<h3 id="volume-of-sales">Volume of Sales</h3>
+<p>Volume is the amount of an asset or security that changes hands over some period of time, often over the course of a day.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplots_adjust(top<span style="color:#f92672">=</span><span style="color:#ae81ff">1.25</span>, bottom<span style="color:#f92672">=</span><span style="color:#ae81ff">1.2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, company <span style="color:#f92672">in</span> enumerate(company_list, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, i)
+</span></span><span style="display:flex;"><span>    company[<span style="color:#e6db74">&#39;Volume&#39;</span>]<span style="color:#f92672">.</span>plot()
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Volume&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Sales Volume for </span><span style="color:#e6db74">{</span>tech_list[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/images/seven/volume.png" alt="volume" title="volume"></p>
+<h2 id="2-what-was-the-moving-average-of-the-various-stocks">2. What was the moving average of the various stocks?</h2>
+<p>The moving average (MA) is a simple technical analysis tool that smooths out price data by creating a constantly updated average price.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ma_day <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> ma <span style="color:#f92672">in</span> ma_day:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> company <span style="color:#f92672">in</span> company_list:
+</span></span><span style="display:flex;"><span>        column_name <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;MA for </span><span style="color:#e6db74">{</span>ma<span style="color:#e6db74">}</span><span style="color:#e6db74"> days&#34;</span>
+</span></span><span style="display:flex;"><span>        company[column_name] <span style="color:#f92672">=</span> company[<span style="color:#e6db74">&#39;Adj Close&#39;</span>]<span style="color:#f92672">.</span>rolling(ma)<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>fig, axes <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, ncols<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>set_figheight(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>set_figwidth(<span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AAPL[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;APPLE&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>GOOG[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;GOOGLE&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MSFT[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;MICROSOFT&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AMZN[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;AMAZON&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>META[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;META&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NVDA[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NVIDIA&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TSLA[[<span style="color:#e6db74">&#39;Adj Close&#39;</span>, <span style="color:#e6db74">&#39;MA for 10 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 20 days&#39;</span>, <span style="color:#e6db74">&#39;MA for 50 days&#39;</span>]]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;TESLA&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/images/seven/ma.png" alt="ma" title="ma"></p>
+<h2 id="3-what-was-the-daily-return-of-the-stock-on-average">3. What was the daily return of the stock on average?</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> company <span style="color:#f92672">in</span> company_list:
+</span></span><span style="display:flex;"><span>    company[<span style="color:#e6db74">&#39;Daily Return&#39;</span>] <span style="color:#f92672">=</span> company[<span style="color:#e6db74">&#39;Adj Close&#39;</span>]<span style="color:#f92672">.</span>pct_change()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, axes <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, ncols<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>set_figheight(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>set_figwidth(<span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AAPL[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;APPLE&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>GOOG[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;GOOGLE&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MSFT[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;MICROSOFT&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AMZN[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;AMAZON&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/images/seven/return1.png" alt="return1" title="return1"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> company <span style="color:#f92672">in</span> company_list:
+</span></span><span style="display:flex;"><span>    company[<span style="color:#e6db74">&#39;Daily Return&#39;</span>] <span style="color:#f92672">=</span> company[<span style="color:#e6db74">&#39;Adj Close&#39;</span>]<span style="color:#f92672">.</span>pct_change()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, axes <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(nrows<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, ncols<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>set_figheight(<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>set_figwidth(<span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>META[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;META&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NVDA[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;NVIDIA&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TSLA[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>], legend<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, linestyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;--&#39;</span>, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>axes[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#39;TESLA&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/images/seven/return2.png" alt="return2" title="return2"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">9</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, company <span style="color:#f92672">in</span> enumerate(company_list, <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>, i)
+</span></span><span style="display:flex;"><span>    company[<span style="color:#e6db74">&#39;Daily Return&#39;</span>]<span style="color:#f92672">.</span>hist(bins<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Daily Return&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Counts&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>company_name[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>tight_layout()
+</span></span></code></pre></div><p><img src="/images/seven/returnhist.png" alt="returnhist" title="returnhist"></p>
+<h2 id="4-what-was-the-correlation-between-different-stocks-closing-prices">4. What was the correlation between different stocks closing prices?</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>closing_df <span style="color:#f92672">=</span> pdr<span style="color:#f92672">.</span>get_data_yahoo(tech_list, start<span style="color:#f92672">=</span>start, end<span style="color:#f92672">=</span>end)[<span style="color:#e6db74">&#39;Adj Close&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make a new tech returns DataFrame</span>
+</span></span><span style="display:flex;"><span>tech_rets <span style="color:#f92672">=</span> closing_df<span style="color:#f92672">.</span>pct_change()
+</span></span><span style="display:flex;"><span>tech_rets<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><img src="/images/seven/correlation.png" alt="correlation" title="correlation"></p>
+<p>Now we can compare the daily percentage return of two stocks to check how correlated. First let&rsquo;s see a sotck compared to itself.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Comparing Google to itself should show a perfectly linear relationship</span>
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>jointplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GOOG&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GOOG&#39;</span>, data<span style="color:#f92672">=</span>tech_rets, kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>)
+</span></span></code></pre></div><p><img src="/images/seven/goog.png" alt="goog" title="goog"></p>
+<h3 id="correlation-between-ai-companies-and-nvidia">Correlation Between AI Companies and Nvidia</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>jointplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NVDA&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;MSFT&#39;</span>, data<span style="color:#f92672">=</span>tech_rets, kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;seagreen&#39;</span>)
+</span></span></code></pre></div><p><img src="/images/seven/nvdamsft.png" alt="nvdamsft" title="nvdamsft"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>jointplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NVDA&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;META&#39;</span>, data<span style="color:#f92672">=</span>tech_rets, kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;seagreen&#39;</span>)
+</span></span></code></pre></div><p><img src="/images/seven/nvdameta.png" alt="nvdameta" title="nvdameta"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>jointplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NVDA&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;AMZN&#39;</span>, data<span style="color:#f92672">=</span>tech_rets, kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;seagreen&#39;</span>)
+</span></span></code></pre></div><p><img src="/images/seven/nvdaamzn.png" alt="nvdaamzn" title="nvdaamzn"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>jointplot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;NVDA&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GOOG&#39;</span>, data<span style="color:#f92672">=</span>tech_rets, kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;seagreen&#39;</span>)
+</span></span></code></pre></div><p><img src="/images/seven/nvdagoog.png" alt="nvdagoog" title="nvdagoog"></p>
+<h3 id="returns-correlations">Returns Correlations</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>returns_fig <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>PairGrid(tech_rets<span style="color:#f92672">.</span>dropna())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Using map_upper we can specify what the upper triangle will look like.</span>
+</span></span><span style="display:flex;"><span>returns_fig<span style="color:#f92672">.</span>map_upper(plt<span style="color:#f92672">.</span>scatter, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;purple&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># We can also define the lower triangle in the figure, inclufing the plot type (kde) </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># or the color map (BluePurple)</span>
+</span></span><span style="display:flex;"><span>returns_fig<span style="color:#f92672">.</span>map_lower(sns<span style="color:#f92672">.</span>kdeplot, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cool_d&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Finally we&#39;ll define the diagonal as a series of histogram plots of the daily return</span>
+</span></span><span style="display:flex;"><span>returns_fig<span style="color:#f92672">.</span>map_diag(plt<span style="color:#f92672">.</span>hist, bins<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
+</span></span></code></pre></div><p><img src="/images/seven/returncorrelation.png" alt="returncorrelation" title="returncorrelation"></p>
+<h3 id="closing-price-correlations">Closing Price Correlations</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Set up our figure by naming it returns_fig, call PairPLot on the DataFrame</span>
+</span></span><span style="display:flex;"><span>closing_fig <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>PairGrid(closing_df)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Using map_upper we can specify what the upper triangle will look like.</span>
+</span></span><span style="display:flex;"><span>closing_fig<span style="color:#f92672">.</span>map_upper(plt<span style="color:#f92672">.</span>scatter,color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;purple&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># We can also define the lower triangle in the figure, inclufing the plot type (kde) or the color map (BluePurple)</span>
+</span></span><span style="display:flex;"><span>closing_fig<span style="color:#f92672">.</span>map_lower(sns<span style="color:#f92672">.</span>kdeplot,cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cool_d&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Finally we&#39;ll define the diagonal as a series of histogram plots of the daily return</span>
+</span></span><span style="display:flex;"><span>closing_fig<span style="color:#f92672">.</span>map_diag(plt<span style="color:#f92672">.</span>hist,bins<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
+</span></span></code></pre></div><p><img src="/images/seven/closingcorrelation.png" alt="closingcorrelation" title="closingcorrelation"></p>
+<h3 id="correlation-matrix">Correlation Matrix</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">10</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>heatmap(tech_rets<span style="color:#f92672">.</span>corr(), annot<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;summer&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Correlation of stock return&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>subplot(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>heatmap(closing_df<span style="color:#f92672">.</span>corr(), annot<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;summer&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Correlation of stock closing price&#39;</span>)
+</span></span></code></pre></div><p><img src="/images/seven/correlationmatrix.png" alt="correlationmatrix" title="correlationmatrix"></p>
+<h2 id="5-how-much-value-do-we-put-at-risk-by-investing-in-a-particular-stock">5. How much value do we put at risk by investing in a particular stock?</h2>
+<p>There are many ways we can quantify risk, one of the most basic ways using the information we&rsquo;ve gathered on daily percentage returns is by comparing the expected return with the standard deviation of the daily returns.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>rets <span style="color:#f92672">=</span> tech_rets<span style="color:#f92672">.</span>dropna()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>area <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>pi <span style="color:#f92672">*</span> <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">8</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>scatter(rets<span style="color:#f92672">.</span>mean(), rets<span style="color:#f92672">.</span>std(), s<span style="color:#f92672">=</span>area)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Expected return&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Risk&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> label, x, y <span style="color:#f92672">in</span> zip(rets<span style="color:#f92672">.</span>columns, rets<span style="color:#f92672">.</span>mean(), rets<span style="color:#f92672">.</span>std()):
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>annotate(label, xy<span style="color:#f92672">=</span>(x, y), xytext<span style="color:#f92672">=</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">50</span>), textcoords<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;offset points&#39;</span>, ha<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;right&#39;</span>, va<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bottom&#39;</span>, 
+</span></span><span style="display:flex;"><span>                 arrowprops<span style="color:#f92672">=</span>dict(arrowstyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;-&#39;</span>, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;blue&#39;</span>, connectionstyle<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;arc3,rad=-0.3&#39;</span>))
+</span></span></code></pre></div><p><img src="/images/seven/risk.png" alt="risk" title="risk"></p>
+<h2 id="6-predicting-the-closing-price-stock-price-of-nvda">6. Predicting the closing price stock price of NVDA:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pdr<span style="color:#f92672">.</span>get_data_yahoo(<span style="color:#e6db74">&#39;NVDA&#39;</span>, start<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2016-01-01&#39;</span>, end<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>now())
+</span></span><span style="display:flex;"><span>df
+</span></span></code></pre></div><p><img src="/images/seven/fullnvda.png" alt="fullnvda" title="fullnvda"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Close Price History&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(df[<span style="color:#e6db74">&#39;Close&#39;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Date&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Close Price USD ($)&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img src="/images/seven/fullnvdagraph.png" alt="fullnvdagraph" title="fullnvdagraph"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create a new dataframe with only the &#39;Close column </span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>filter([<span style="color:#e6db74">&#39;Close&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert the dataframe to a numpy array</span>
+</span></span><span style="display:flex;"><span>dataset <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the number of rows to train the model on</span>
+</span></span><span style="display:flex;"><span>training_data_len <span style="color:#f92672">=</span> int(np<span style="color:#f92672">.</span>ceil( len(dataset) <span style="color:#f92672">*</span> <span style="color:#ae81ff">.95</span> ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>training_data_len
+</span></span></code></pre></div><blockquote>
+<p>1972</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Scale the data</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> MinMaxScaler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>scaler <span style="color:#f92672">=</span> MinMaxScaler(feature_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>scaled_data <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(dataset)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>scaled_data
+</span></span></code></pre></div><p><img src="/images/seven/scaler.png" alt="scaler" title="scaler"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>train_data <span style="color:#f92672">=</span> scaled_data[<span style="color:#ae81ff">0</span>:int(training_data_len), :]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Split the data into x_train and y_train data sets</span>
+</span></span><span style="display:flex;"><span>x_train <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>y_train <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">60</span>, len(train_data)):
+</span></span><span style="display:flex;"><span>    x_train<span style="color:#f92672">.</span>append(train_data[i<span style="color:#f92672">-</span><span style="color:#ae81ff">60</span>:i, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    y_train<span style="color:#f92672">.</span>append(train_data[i, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> i<span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">61</span>:
+</span></span><span style="display:flex;"><span>        print(x_train)
+</span></span><span style="display:flex;"><span>        print(y_train)
+</span></span><span style="display:flex;"><span>        print()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert the x_train and y_train to numpy arrays </span>
+</span></span><span style="display:flex;"><span>x_train, y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(x_train), np<span style="color:#f92672">.</span>array(y_train)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Reshape the data</span>
+</span></span><span style="display:flex;"><span>x_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(x_train, (x_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], x_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div><p><img src="/images/seven/xshape.png" alt="xshape" title="xshape"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Build the LSTM model</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Sequential()
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(LSTM(<span style="color:#ae81ff">128</span>, return_sequences<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, input_shape<span style="color:#f92672">=</span> (x_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">1</span>)))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(LSTM(<span style="color:#ae81ff">64</span>, return_sequences<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">25</span>))
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compile the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;adam&#39;</span>, loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mean_squared_error&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Train the model</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(x_train, y_train, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Create the testing data set</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new array containing scaled values from index 1543 to 2002 </span>
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> scaled_data[training_data_len <span style="color:#f92672">-</span> <span style="color:#ae81ff">60</span>: , :]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create the data sets x_test and y_test</span>
+</span></span><span style="display:flex;"><span>x_test <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>y_test <span style="color:#f92672">=</span> dataset[training_data_len:, :]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">60</span>, len(test_data)):
+</span></span><span style="display:flex;"><span>    x_test<span style="color:#f92672">.</span>append(test_data[i<span style="color:#f92672">-</span><span style="color:#ae81ff">60</span>:i, <span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Convert the data to a numpy array</span>
+</span></span><span style="display:flex;"><span>x_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(x_test)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Reshape the data</span>
+</span></span><span style="display:flex;"><span>x_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>reshape(x_test, (x_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], x_test<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">1</span> ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the models predicted price values </span>
+</span></span><span style="display:flex;"><span>predictions <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(x_test)
+</span></span><span style="display:flex;"><span>predictions <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>inverse_transform(predictions)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get the root mean squared error (RMSE)</span>
+</span></span><span style="display:flex;"><span>rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(np<span style="color:#f92672">.</span>mean(((predictions <span style="color:#f92672">-</span> y_test) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>rmse
+</span></span></code></pre></div><blockquote>
+<p>84.16346414984457</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Plot the data</span>
+</span></span><span style="display:flex;"><span>train <span style="color:#f92672">=</span> data[:training_data_len]
+</span></span><span style="display:flex;"><span>valid <span style="color:#f92672">=</span> data[training_data_len:]
+</span></span><span style="display:flex;"><span>valid[<span style="color:#e6db74">&#39;Predictions&#39;</span>] <span style="color:#f92672">=</span> predictions
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Visualize the data</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">6</span>))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Model&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Date&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Close Price USD ($)&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(train[<span style="color:#e6db74">&#39;Close&#39;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(valid[[<span style="color:#e6db74">&#39;Close&#39;</span>, <span style="color:#e6db74">&#39;Predictions&#39;</span>]])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#39;Train&#39;</span>, <span style="color:#e6db74">&#39;Val&#39;</span>, <span style="color:#e6db74">&#39;Predictions&#39;</span>], loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;lower right&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img src="/images/seven/pred.png" alt="pred" title="pred"></p>
+<p>Predicting the exact value of a stock is challenging due to unpredictable market factors and information delays, making such predictions often outdated. Instead, forecasting the general direction of a stock, whether it will rise or fall, proves more reliable, considering the inherent uncertainties in market movements and providing valuable insights for investors.</p>
+
+    </div>
+</div>
+
+
+
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 German Martinez</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

@@ -29,6 +29,13 @@
       <description>Abstract This code segment demonstrates the implementation of a logistic regression model for heart attack prediction using the Heart Attack Analysis &amp;amp; Prediction dataset.&#xA;Imports import numpy as np import pandas as pd from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.linear_model import LogisticRegression from sklearn.metrics import accuracy_score from sklearn.metrics import classification_report Load Dataset df = pd.read_csv(&amp;#34;/kaggle/input/heart-attack-analysis-prediction-dataset/heart.csv&amp;#34;) df X = df.drop([&amp;#39;output&amp;#39;], axis=1) y = df[&amp;#39;output&amp;#39;] Scaler scaler = StandardScaler() scaler.</description>
     </item>
     <item>
+      <title>Magnificent Seven Stock Market Analysis</title>
+      <link>http://localhost:1313/projects/seven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/seven/</guid>
+      <description>We&amp;rsquo;ll be answering the following questions along the way:&#xA;1.) What was the change in price of the stock over time? 2.) What was the daily return of the stock on average? 3.) What was the moving average of the various stocks? 4.) What was the correlation between different stocks&#39;? 5.) How much value do we put at risk by investing in a particular stock? 6.) How can we attempt to predict future stock behavior?</description>
+    </item>
+    <item>
       <title>Visual Transformer from Scratch for Pneumonia Detection</title>
       <link>http://localhost:1313/projects/vit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
