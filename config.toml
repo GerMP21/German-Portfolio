@@ -11,7 +11,7 @@ pygmentsStyle = "monokai"
 
 [params]
   footer = "German Martinez"
-  description = "A data enthusiast looking to leverage my skills to generate value"
+  description = "A data enthusiast looking to leverage his skills to generate value"
   avatarURL = "/images/avatar.jpg"
   AvatarAltText = "avatar"
   avatarSize = "size-m"
